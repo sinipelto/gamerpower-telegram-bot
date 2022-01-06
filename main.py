@@ -8,7 +8,14 @@ from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandle
 import giveaway
 import msg_parser
 
+import builtins
+
 config = dotenv.dotenv_values(".env")
+
+# Ensure all prints get flushed in the logs immediately
+def print(*args, **kwargs):
+	kwargs['flush'] = True
+	builtins.print(*args, **kwargs)
 
 
 def process_giveaways(bot: Bot):
